@@ -11,5 +11,6 @@ IP conexión
 SHOW port;``
 
 # Initial data
-psql -U usuario -d gym_casa -f gym_data.sql
-psql -h localhost -U username -d database_name -f db/gym_init_data.sql
+Primero crear las tablas con `python manage.py migrate` y luego cargar el catálogo:
+
+psql -h localhost -U username -d database_name -f db/seed_data.sql

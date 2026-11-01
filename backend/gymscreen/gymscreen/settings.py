@@ -35,6 +35,7 @@ ALLOWED_HOSTS = CONFIG["ALLOWED_HOSTS"].split(",")
 INSTALLED_APPS = [
     'exercises',
     'rest_framework',
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,6 +54,22 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Frontend origins allowed to call the API (e.g. Vite on http://localhost:5173)
+CORS_ALLOWED_ORIGINS = CONFIG["CORS_ALLOWED_ORIGINS"].split(",")
+
+REST_FRAMEWORK = {
+    # Browsable API only in local; dev/prod respond with JSON only
+    "DEFAULT_RENDERER_CLASSES": (
+        [
+            "rest_framework.renderers.JSONRenderer",
+            "rest_framework.renderers.BrowsableAPIRenderer",
+        ]
+        if ENV == "local"
+        else ["rest_framework.renderers.JSONRenderer"]
+    ),
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
+}
 
 ROOT_URLCONF = 'gymscreen.urls'
 

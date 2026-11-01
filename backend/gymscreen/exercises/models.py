@@ -61,6 +61,7 @@ class ExerciseVideo(models.Model):
 
     class Meta:
         db_table = "exercise_video"
+        ordering = ["id"]
         constraints = [
             models.UniqueConstraint(
                 fields=["exercise", "url"], name="exercise_video_exercise_id_url_key"

@@ -34,6 +34,7 @@ SETTINGS = [
     "DB_NAME",
     "DB_HOST",
     "DB_PORT",
+    "CORS_ALLOWED_ORIGINS",
 ]
 
 ENV_FILE = Path(__file__).resolve().parent.parent.parent / "env.local"

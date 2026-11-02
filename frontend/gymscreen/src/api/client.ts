@@ -1,0 +1,12 @@
+const API_URL = import.meta.env.VITE_API_URL
+
+export async function apiGet<T>(path: string, signal?: AbortSignal): Promise<T> {
+  const response = await fetch(`${API_URL}${path}`, {
+    signal,
+    headers: { Accept: 'application/json' },
+  })
+  if (!response.ok) {
+    throw new Error(`Error ${response.status} al consultar ${path}`)
+  }
+  return response.json() as Promise<T>
+}

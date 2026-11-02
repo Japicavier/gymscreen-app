@@ -39,3 +39,4 @@ Un id no numérico en `equipment` o `muscle_group` responde `400`.
 ### Mejoras futuras
 - Implementar una fecha de creacion y última actualización en las tablas de equipo y ejercicios
 - Hacer que los ejercicios tengan su nombre en inglés y en españo dentro de la base de datos
+- Se puede plantear la idea de filtrar los ejercicios por equipo en la sección de Ejercicios
